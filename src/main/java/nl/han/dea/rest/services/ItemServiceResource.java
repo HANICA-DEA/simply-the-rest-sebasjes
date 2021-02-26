@@ -1,8 +1,5 @@
 package nl.han.dea.rest.services;
 
-import nl.han.dea.rest.services.dto.ItemDTO;
-
-import javax.json.Json;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -33,5 +30,13 @@ public class ItemServiceResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllItemsInJson() {
         return Response.ok(itemService.getAll()).build();
+    }
+
+    @GET
+    @Path("/{itemId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getItem(@PathParam("itemId") int itemId)
+    {
+        return Response.ok(itemService.getItem(itemId)).build();
     }
 }
